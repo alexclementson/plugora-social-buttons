@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.4
+## 0.1.5
 - Initial release of Plugora Floating Social Buttons.
 - Platforms: Facebook, X, Instagram, LinkedIn, YouTube, TikTok, WhatsApp, Phone, Email, SMS, Custom.
 - Layouts: vertical, horizontal, expandable, pop-up.
