@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Plugora Floating Social Buttons
  * Description: Modern floating social media bar for WordPress — Facebook, X, WhatsApp, Instagram, LinkedIn, YouTube, TikTok, email, phone and custom links. Drag-to-reorder, flexible visibility rules and a polished Plugora admin UI.
- * Version:     0.1.4
+ * Version:     0.1.5
  * Author:      Plugora
  * Author URI:  https://plugora.dev
  * License:     GPL-2.0-or-later
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'PLUGORA_SB_VERSION', '0.1.4' );
+define( 'PLUGORA_SB_VERSION', '0.1.5' );
 define( 'PLUGORA_SB_FILE',    __FILE__ );
 define( 'PLUGORA_SB_DIR',     plugin_dir_path( __FILE__ ) );
 define( 'PLUGORA_SB_URL',     plugin_dir_url( __FILE__ ) );
