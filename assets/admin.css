@@ -1,0 +1,60 @@
+/* Plugora Floating Social Buttons — admin styles */
+.plugora-sb-wrap { max-width: 1240px; }
+.plugora-sb-grid { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 24px; align-items: flex-start; margin-top: 16px; }
+@media (max-width: 1100px) { .plugora-sb-grid { grid-template-columns: 1fr; } }
+
+.plugora-card { background: #fff; border: 1px solid #e2e6ec; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 2px rgba(15,23,42,.04); margin-bottom: 18px; }
+.plugora-card-title { margin: 0 0 4px; font-size: 16px; font-weight: 600; color: #0f172a; }
+.plugora-card-sub   { margin: 0 0 14px; color: #64748b; font-size: 13px; }
+
+/* Switch */
+.plugora-switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+.plugora-switch input[type=checkbox] { opacity: 0; width: 0; height: 0; }
+.plugora-switch-slider { position: absolute; inset: 0; background: #cbd5e1; border-radius: 999px; transition: .15s; cursor: pointer; }
+.plugora-switch-slider::before { content: ""; position: absolute; height: 16px; width: 16px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .15s; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.plugora-switch input[type=checkbox]:checked + .plugora-switch-slider { background: #6366f1; }
+.plugora-switch input[type=checkbox]:checked + .plugora-switch-slider::before { transform: translateX(18px); }
+
+/* Badges */
+.plugora-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+.plugora-badge-pro  { background: linear-gradient(135deg,#6366f1,#8b5cf6); color: #fff; }
+.plugora-badge-free { background: #e2e8f0; color: #475569; }
+
+/* Button rows */
+.plugora-sb-buttons { display: flex; flex-direction: column; gap: 8px; }
+.plugora-sb-row { display: grid; grid-template-columns: 22px 38px 1fr auto auto; gap: 14px; align-items: center; padding: 10px 12px; border: 1px solid #e2e8f0; border-radius: 10px; background: #f8fafc; }
+.plugora-sb-row.is-dragging { background: #eef2ff; border-color: #c7d2fe; }
+.plugora-sb-row__handle { color: #94a3b8; cursor: grab; }
+.plugora-sb-row__handle:active { cursor: grabbing; }
+.plugora-sb-row__icon { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: #fff; border: 1px solid #e2e8f0; }
+.plugora-sb-row__icon svg { width: 18px; height: 18px; }
+.plugora-sb-row__fields { display: grid; grid-template-columns: 140px 1fr 1fr 100px; gap: 10px; align-items: center; }
+.plugora-sb-row__label { font-size: 13px; color: #0f172a; }
+.plugora-sb-row__value, .plugora-sb-row__custom-label, .plugora-sb-row__color { width: 100%; }
+.plugora-sb-row__remove { color: #b91c1c; }
+
+.plugora-sb-add-row { display: flex; gap: 8px; margin-top: 14px; align-items: center; }
+
+/* Position picker */
+.plugora-sb-position-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 380px; }
+.plugora-sb-radio-tile { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; cursor: pointer; font-size: 13px; }
+.plugora-sb-radio-tile:has(input:checked) { background: #eef2ff; border-color: #6366f1; }
+.plugora-sb-radio-tile__dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; }
+.plugora-sb-radio-tile:has(input:checked) .plugora-sb-radio-tile__dot { background: #6366f1; }
+
+/* Preview */
+.plugora-sb-preview-card { position: sticky; top: 60px; }
+.plugora-sb-preview-stage { position: relative; height: 420px; border: 1px dashed #cbd5e1; border-radius: 10px; background: linear-gradient(135deg,#f8fafc,#eef2ff); overflow: hidden; }
+
+/* License panel */
+.plugora-license-grid { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 20px; margin-top: 14px; }
+@media (max-width: 1000px) { .plugora-license-grid { grid-template-columns: 1fr; } }
+.plugora-license-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; }
+.plugora-upsell { background: linear-gradient(160deg,#0f172a,#1e293b); color: #f8fafc; border: 0; }
+.plugora-upsell h3 { color: #fff; margin-top: 0; }
+.plugora-feature-list { list-style: none; margin: 0 0 16px; padding: 0; }
+.plugora-feature-list li { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.plugora-feature-list .dashicons { color: #34d399; }
+
+/* Help dot */
+.plugora-help { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: #e2e8f0; color: #475569; font-size: 11px; margin-left: 8px; cursor: help; }

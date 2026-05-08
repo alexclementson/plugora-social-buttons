@@ -1,0 +1,122 @@
+/* Plugora Floating Social Buttons — front-end styles
+   Uses CSS variables set inline by PHP (--psb-size, --psb-gap, --psb-radius, --psb-shadow, --psb-z, --psb-color)
+   so the same stylesheet handles every config. */
+
+.psb {
+	position: fixed;
+	z-index: var(--psb-z, 9990);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.psb--pos-bottom-right { right: 18px; bottom: 18px; }
+.psb--pos-bottom-left  { left: 18px;  bottom: 18px; }
+.psb--pos-middle-right { right: 18px; top: 50%; transform: translateY(-50%); }
+.psb--pos-middle-left  { left: 18px;  top: 50%; transform: translateY(-50%); }
+
+.psb__list { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--psb-gap, 10px); }
+.psb--layout-vertical .psb__list   { flex-direction: column; }
+.psb--layout-horizontal .psb__list { flex-direction: row; }
+
+.psb__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--psb-size, 44px);
+	height: var(--psb-size, 44px);
+	border-radius: var(--psb-radius, 50%);
+	background: var(--psb-color, #6366f1);
+	color: #fff;
+	box-shadow: var(--psb-shadow, 0 6px 18px rgba(0,0,0,.18));
+	text-decoration: none;
+	transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+	position: relative;
+}
+.psb__btn:hover, .psb__btn:focus-visible { transform: translateY(-2px); filter: brightness(1.08); outline: none; }
+.psb__btn:focus-visible { box-shadow: 0 0 0 3px rgba(99,102,241,.35), var(--psb-shadow); }
+.psb__btn:active { transform: translateY(0); }
+
+.psb__icon { display: inline-flex; }
+.psb__icon svg { width: 55%; height: 55%; }
+
+/* Labels — hidden by default; shown on hover when --labels is on. */
+.psb__label {
+	position: absolute;
+	pointer-events: none;
+	background: #0f172a;
+	color: #fff;
+	font-size: 12px;
+	padding: 4px 8px;
+	border-radius: 6px;
+	white-space: nowrap;
+	opacity: 0;
+	transform: translateX(0);
+	transition: opacity .15s ease, transform .15s ease;
+}
+.psb--no-labels .psb__label { clip: rect(0 0 0 0); clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; position: absolute; }
+
+.psb--labels.psb--pos-bottom-right .psb__label,
+.psb--labels.psb--pos-middle-right .psb__label { right: calc(100% + 10px); top: 50%; transform: translate(8px,-50%); }
+.psb--labels.psb--pos-bottom-left .psb__label,
+.psb--labels.psb--pos-middle-left .psb__label  { left:  calc(100% + 10px); top: 50%; transform: translate(-8px,-50%); }
+.psb--labels .psb__btn:hover .psb__label,
+.psb--labels .psb__btn:focus-visible .psb__label { opacity: 1; transform: translate(0,-50%); }
+
+/* Expandable + popup layouts */
+.psb__toggle {
+	width: var(--psb-size, 44px);
+	height: var(--psb-size, 44px);
+	border-radius: var(--psb-radius, 50%);
+	border: 0;
+	cursor: pointer;
+	background: linear-gradient(135deg,#6366f1,#8b5cf6);
+	color: #fff;
+	box-shadow: var(--psb-shadow, 0 6px 18px rgba(0,0,0,.18));
+	display: none;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+.psb__toggle-icon  { display: inline-flex; }
+.psb__toggle-icon svg { width: 55%; height: 55%; }
+.psb__toggle-close { display: none; font-size: 22px; line-height: 1; }
+.psb__toggle[aria-expanded=true] .psb__toggle-icon  { display: none; }
+.psb__toggle[aria-expanded=true] .psb__toggle-close { display: inline-flex; }
+
+.psb--layout-expandable .psb__toggle,
+.psb--layout-popup .psb__toggle { display: inline-flex; }
+
+.psb--layout-expandable .psb__list,
+.psb--layout-popup .psb__list {
+	display: none;
+	margin-bottom: var(--psb-gap, 10px);
+}
+.psb--layout-expandable.is-open .psb__list { display: flex; flex-direction: column; }
+.psb--layout-popup.is-open      .psb__list {
+	display: grid;
+	grid-template-columns: repeat(3, var(--psb-size, 44px));
+	gap: var(--psb-gap, 10px);
+	padding: 14px;
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 18px 50px rgba(0,0,0,.18);
+	position: absolute;
+	bottom: calc(var(--psb-size, 44px) + 14px);
+	right: 0;
+}
+.psb--pos-bottom-left.psb--layout-popup.is-open .psb__list,
+.psb--pos-middle-left.psb--layout-popup.is-open .psb__list { right: auto; left: 0; }
+
+/* Hover-trigger for expandable */
+@media (hover: hover) {
+	.psb--layout-expandable.psb--trigger-hover:hover .psb__list { display: flex; flex-direction: column; }
+}
+
+/* Device visibility */
+@media (max-width: 600px) { .psb.psb-hide-mobile  { display: none !important; } }
+@media (min-width: 601px) and (max-width: 1024px) { .psb.psb-hide-tablet  { display: none !important; } }
+@media (min-width: 1025px) { .psb.psb-hide-desktop { display: none !important; } }
+
+@media (prefers-reduced-motion: reduce) {
+	.psb__btn, .psb__label, .psb__toggle { transition: none; }
+	.psb__btn:hover { transform: none; }
+}
